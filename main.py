@@ -24,14 +24,14 @@ def main(workflow):
         # 显示的地址，减少重复显示
         location_list = []
         for i in [location_information['country'], location_information['province'], location_information['city']]:
-            if i not in location_list:
+            if i != '' and i not in location_list:
                 location_list.append(i)
         location = '-'.join(location_list)
 
         subtitle = '{ip} {location} {isp}'.format(ip=ip, location=location, isp=location_information['isp'])
         arg = 'https://www.ipip.net/ip/{ip}.html'.format(ip=ip)
-        # @todo icon设置国家的国旗
-        workflow.add_item(title=hostname, subtitle=subtitle, valid=True, arg=arg, icon=ICON_NETWORK)
+        icon = 'app/image/{file}.png'.format(file=location_information['country_code'])
+        workflow.add_item(title=hostname, subtitle=subtitle, valid=True, arg=arg, icon=icon)
     else:
         workflow.add_item('暂没有 "{hostname}" 的信息'.format(hostname=hostname), icon=ICON_ERROR)
     workflow.send_feedback()
