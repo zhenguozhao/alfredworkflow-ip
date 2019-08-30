@@ -4,7 +4,7 @@ import sys
 import logging
 from app.setting import LOGGING_SETTING, LOGGING_LEVEL
 from app.ip import IP
-from app.packages.workflow import Workflow3, ICON_NETWORK, ICON_ERROR
+from app.packages.workflow import Workflow3, ICON_ERROR
 
 # 指定编码解码方式
 reload(sys)
